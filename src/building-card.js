@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import '@lrnwebcomponents/meme-maker.js';
+import "@lrnwebcomponents/meme-maker/meme-maker.js";
 
 const logo = new URL('../assets/open-wc-logo.svg', import.meta.url).href;
 
@@ -65,18 +65,23 @@ export class BuildingCard extends LitElement {
 
   constructor() {
     super();
-    this.name = "WestGate";
+    this.name = "The Buildings of Penn State";
+    this.imgurl = 'https://i4-wp.ist.psu.edu/gencyber/wp-content/uploads/sites/17/2018/03/westgatebuilding-256tord.jpg';
+    this.top = 'Westgate';
+    this.bottom = 'Keeps me up at night';
   }
 
   render() {
     return html`
   <div class="wrapper">
     <div class="container">
-    <img class="image" src="https://i4-wp.ist.psu.edu/gencyber/wp-content/uploads/sites/17/2018/03/westgatebuilding-256tord.jpg"/>
     <div class="header">
       <h3>${this.name}</h3>
+      <meme-maker image-url="${this.imgurl}" top-text="${this.top}" bottom-text="${this.bottom}"></meme-maker>
     </div>
     <details class="details">
+    <slot>
+    </slot>
       <summary>INFO</summary>
       <div>
         <ul>
