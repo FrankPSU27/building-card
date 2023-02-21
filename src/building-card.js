@@ -21,6 +21,10 @@ export class BuildingCard extends LitElement {
         display: inline-flex;
       }
       
+      .container {
+        --main-bg-color: grey;
+      }
+
       .image {
         width: 400px;
       }
@@ -57,9 +61,6 @@ export class BuildingCard extends LitElement {
           } 
         }
       
-      body{
-        background-color: grey;
-      }
     }`;
   }
 
