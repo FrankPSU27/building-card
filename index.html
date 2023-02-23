@@ -25,6 +25,7 @@
     <button class="modifytitle">Change Title</button>
     <button id="deletelastcard">Delete</button>
     <button data-toggle-btn>Toggle INFO</button>
+    <button class="toggle">Background Color</button>
   </div>
 
   <div id="app">
@@ -60,6 +61,21 @@ document.querySelector('.modifytitle').addEventListener('click', function(e) {
     document.querySelector('building-card').shadowRoot.querySelector('.wrapper h3').innerText = name;
   }
 });
+
+// toggle color
+document.querySelector('.toggle').addEventListener('click', function(e) {
+      let card = document.querySelector('building-card');
+      if (card.colors){
+        document.querySelectorAll('building-card').forEach((item) =>{
+          item.colors = false;
+        })
+        
+      } else {
+        document.querySelectorAll('building-card').forEach((item) =>{
+          item.colors = true;
+        })
+      }
+    });
 
 // delete the last item
 document.querySelector('#deletelastcard').addEventListener('click', function(e) {

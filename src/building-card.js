@@ -6,25 +6,27 @@ const logo = new URL('../assets/open-wc-logo.svg', import.meta.url).href;
 export class BuildingCard extends LitElement {
   static get properties() {
     return {
-    name: {
-      type: String,
-      reflect: true
-    },
+    name: {type: String,reflect: true},
+    imgurl: {type: String},
+    top: {type: String},
+    bottom: {type: String},
+    colors: {type: Boolean, reflect: true}
     }
   }
 
   static get styles() {
     return css`
+    :host([colors]) .wrapper{
+      background-color: blue;
+    }
       .wrapper {
         width: 400px;
         border: 2px solid black;
         display: inline-flex;
+        color: black;
+        background-color: grey;
       }
       
-      .container {
-        --main-bg-color: grey;
-      }
-
       .image {
         width: 400px;
       }
@@ -54,8 +56,13 @@ export class BuildingCard extends LitElement {
         padding: 8px 16px;
         margin-bottom: 10px;
       }
+
+      .toggle{
+        background-color: grey;
+        color: blue;
+      }
       
-       @media (max-width: 800px) and (min-width: 500px)  {
+       @media (max-width: 800px) and (min-width: 300px)  {
           .button2 {
             display: inline-block;
           } 
