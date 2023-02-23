@@ -62,11 +62,11 @@ export class BuildingCard extends LitElement {
         color: blue;
       }
       
-       @media (max-width: 800px) and (min-width: 300px)  {
-          .button2 {
-            display: inline-block;
-          } 
-        }
+      @media (max-width: 800px) and (min-width: 300px)  {
+        .button2 {
+          display: inline-block;
+        } 
+      }
       
     }`;
   }
