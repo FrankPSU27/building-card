@@ -30,24 +30,14 @@ export class BuildingCard extends LitElement {
       .image {
         width: 400px;
       }
-      
-      .header {
-        text-align: center;
-        font-weight: bold;
-        font-size: 2rem;
+
+      .container {
+          font-weight: bold;
+          text-align: center;
+          fount-size: 50px;
       }
       
-      .header h3 {
-        transition: .3s ease-in-out all;
-        margin: 16px;
-        font-style: normal;
-      }
-      
-      .details summary {
-        fount-size: 20px;
-        fount-weight: bold;
-      }
-      .button2{
+      .button{
         text-transform: uppercase;
         background-color: blue;
         color: white;
@@ -77,28 +67,44 @@ export class BuildingCard extends LitElement {
     this.imgurl = 'https://i4-wp.ist.psu.edu/gencyber/wp-content/uploads/sites/17/2018/03/westgatebuilding-256tord.jpg';
     this.top = 'Westgate';
     this.bottom = 'Keeps me up at night';
+    this.opened = false;
   }
+
+  toggleEvent(e){
+    const state = this.shadowRoot.querySelector('details').getAttribute('open') === '' ? true : false;
+    this.opened = state;
+
+  }
+
+  updated(changedProperties){
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === 'opened') {
+        this.dispatchEvent(new CustomEvent('opened-changed',
+        {
+          composed: true,
+          bubbles: true,
+          cancelable: false,
+          detail: {
+            value: this[propName]
+          }
+        }));
+      }
+    });
+  };
 
   render() {
     return html`
-  <div class="wrapper">
-    <div class="container">
-    <div class="header">
+  <div class="wrapper"> <div class="container">
       <h3>${this.name}</h3>
-      <meme-maker image-url="${this.imgurl}" top-text="${this.top}" bottom-text="${this.bottom}"></meme-maker>
-    </div>
-    <details class="details">
-    <slot>
-    </slot>
+    <meme-maker 
+      image-url="${this.imgurl}"
+      top-text="${this.top}" 
+      bottom-text="${this.bottom}">
+    </meme-maker>
+      <details class="details" .open="${this.opened}" @toggle="${this.toggleEvent}">
       <summary>INFO</summary>
-      <div>
-        <ul>
-          <li>The college of IST at Penn State is the perfect place for yong srudents to learn IT skills so they can function in society. 
-            If you would like to know more about the opritunities offered at PSU click the detals button bellow.</li>
-         </ul>
-      </div>
-      </details>
-      <a href="https://hax.psu.edu" class="button2">Detals</a>
+        <slot></slot>
+     </details>
   </div>`;
   }
 }

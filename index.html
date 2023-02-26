@@ -28,10 +28,18 @@
     <button class="toggle">Background Color</button>
   </div>
 
-  <div id="app">
+  <div id="wrapper">
+    <meme-maker></meme-maker>
+    <building-card opened>
+      <ul>
+        <li>he college of IST at Penn State is the perfect place for yong 
+          srudents to learn IT skills so they can function in society. 
+          If you would like to know more about the opritunities offered 
+          at PSU click the detals button bellow.</li>
+        </ul>
 
-  <building-card></building-card>
-  </div>
+      </building-card>
+    </div>
 
   <script type="module" src="./src/building-card.js"></script>
   <script>
@@ -51,7 +59,7 @@ const details = document.querySelector('building-card').shadowRoot.querySelector
 // duplicate the 1st item
 document.querySelector('.duplicate').addEventListener('click', function(e) {
   const itemToClone = document.querySelector('building-card').cloneNode();
-  document.querySelector('#app').appendChild(itemToClone);
+  document.querySelector('#wrapper').appendChild(itemToClone);
 });
 
 // modify name of 1st item
@@ -81,8 +89,8 @@ document.querySelector('.toggle').addEventListener('click', function(e) {
 document.querySelector('#deletelastcard').addEventListener('click', function(e) {
   let wantsTo = confirm("Are you sure?");
   if (wantsTo) {
-    if (document.querySelector('#app :last-child') !== document.querySelector('building-card')) {
-      document.querySelector('#app :last-child').remove();      
+    if (document.querySelector('#wrapper :last-child') !== document.querySelector('building-card')) {
+      document.querySelector('#wrapper :last-child').remove();      
     }
     else {
       alert("Cannot Delete Last Card");
