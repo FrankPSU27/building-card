@@ -1,5 +1,5 @@
 {
-  "name": "fmk5108-building-card",
+  "name": "@fmk5108/building-card",
   "description": "Webcomponent building-card following open-wc recommendations",
   "license": "MIT",
   "author": "building-card",
